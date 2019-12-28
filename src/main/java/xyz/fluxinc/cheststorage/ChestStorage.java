@@ -72,6 +72,7 @@ public class ChestStorage extends JavaPlugin implements Listener
     }
 
     private static Material surface = Material.GLASS;
+    private static Material surfaceSide = Material.GLASS_PANE;
     private static Material filler = Material.CHEST;
     private static Material edge = Material.SMOOTH_QUARTZ;
 
@@ -86,7 +87,7 @@ public class ChestStorage extends JavaPlugin implements Listener
 
     private static String arrowBackName = "§r§2Previous";
     private static String arrowNextName = "§r§aNext";
-    private static String inUsage = "This storage is in use now";
+    private static String inUsage = "Storage in use";
     private static String titleFormat = "Page %d of %d";
 
     private static int inventoryRows = 4;
