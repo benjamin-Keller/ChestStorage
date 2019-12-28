@@ -1,0 +1,6 @@
+name: ChestStorage
+version: ${project.version}
+main: xyz.fluxinc.cheststorage.ChestStorage
+api-version: 1.13
+authors: [NerdyDragon42]
+description: A modular chest storage!
