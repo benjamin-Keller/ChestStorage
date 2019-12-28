@@ -72,7 +72,7 @@ public class ChestStorage extends JavaPlugin implements Listener
     }
 
     private static Material surface = Material.GLASS;
-    private static Material surfaceSide = Material.GLASS_PANE;
+    private static Material surfaceSide = Material.GRAY_STAINED_GLASS;
     private static Material filler = Material.CHEST;
     private static Material edge = Material.SMOOTH_QUARTZ;
 
@@ -386,7 +386,9 @@ public class ChestStorage extends JavaPlugin implements Listener
     private CoordinatePair findBounds(Location loc)
     {
         Material sel = loc.getBlock().getType();
+        Material sel2 = loc.getBlock().getType();
         World w = loc.getWorld();
+        World w2 = loc.getWorld();
         if (isBoxMaterial(sel))
         {
             int x = loc.getBlockX();
@@ -418,6 +420,43 @@ public class ChestStorage extends JavaPlugin implements Listener
             while(isBoxMaterial(sel))
                 sel = w.getBlockAt(x, y, z2++).getType();
             return new CoordinatePair(new Location(w, x1 + 2, y1 + 2, z1 + 2), new Location(w, x2 - 2, y2 - 2, z2 - 2));
+
+
+        }
+
+        if (isBoxMaterial(sel2))
+        {
+            int x = loc.getBlockX();
+            int y = loc.getBlockY();
+            int z = loc.getBlockZ();
+
+            int x1 = x;
+            int x2 = x;
+            int y1 = y;
+            int y2 = y;
+            int z1 = z;
+            int z2 = z;
+
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x1--, y, z).getType();
+            sel2 = surfaceSide;
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x2++, y, z).getType();
+            sel2 = surfaceSide;
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x, y1--, z).getType();
+            sel2 = surfaceSide;
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x, y2++, z).getType();
+            sel2 = surfaceSide;
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x, y, z1--).getType();
+            sel2 = surfaceSide;
+            while(isBoxMaterial(sel2))
+                sel2 = w2.getBlockAt(x, y, z2++).getType();
+            return new CoordinatePair(new Location(w2, x1 + 2, y1 + 2, z1 + 2), new Location(w2, x2 - 2, y2 - 2, z2 - 2));
+
+
         }
         return null;
     }
