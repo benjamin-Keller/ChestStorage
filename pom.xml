@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>xyz.fluxinc</groupId>
-    <artifactId>ChestStorage</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <artifactId>ModularChests</artifactId>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
-    <name>ChestStorage</name>
+    <name>ModularChests</name>
 
     <description>A modular chest storage!</description>
     <properties>

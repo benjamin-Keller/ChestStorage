@@ -1,4 +1,4 @@
-package xyz.fluxinc.cheststorage;
+package xyz.fluxinc.ModularChests;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +32,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class ChestStorage extends JavaPlugin implements Listener
+public class ModularChests extends JavaPlugin implements Listener
 {
     private class CoordinatePair
     {
