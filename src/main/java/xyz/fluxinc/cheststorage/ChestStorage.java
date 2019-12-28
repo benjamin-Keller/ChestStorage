@@ -130,6 +130,10 @@ public class ChestStorage extends JavaPlugin implements Listener
             getConfig().set("materials.surface", surface.name());
         surface = Material.getMaterial(getConfig().getString("materials.surface", surface.name()));
 
+        if (!getConfig().contains("materials.surfaceSide"))
+            getConfig().set("materials.surfaceSide", surfaceSide.name());
+        surfaceSide = Material.getMaterial(getConfig().getString("materials.surfaceSide", surfaceSide.name()));
+
         if (!getConfig().contains("materials.filler"))
             getConfig().set("materials.filler", filler.name());
         filler = Material.getMaterial(getConfig().getString("materials.filler", filler.name()));
@@ -376,7 +380,7 @@ public class ChestStorage extends JavaPlugin implements Listener
 
     private boolean isBoxMaterial(Material mat)
     {
-        return mat == surface || mat == filler || mat == edge;
+        return mat == surface || mat == surfaceSide || mat == filler || mat == edge;
     }
 
     private CoordinatePair findBounds(Location loc)
