@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
+import com.sun.tools.javac.comp.Todo;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -71,8 +72,9 @@ public class ChestStorage extends JavaPlugin implements Listener
         }
     }
 
+    /*TODO: Make it compatible with colored glass*/
     private static Material surface = Material.GLASS;
-    private static Material surfaceSide = Material.GRAY_STAINED_GLASS;
+    private static Material surfaceSide = Material.GLASS_PANE;
     private static Material filler = Material.CHEST;
     private static Material edge = Material.SMOOTH_QUARTZ;
 
@@ -386,10 +388,8 @@ public class ChestStorage extends JavaPlugin implements Listener
     private CoordinatePair findBounds(Location loc)
     {
         Material sel = loc.getBlock().getType();
-        Material sel2 = loc.getBlock().getType();
         World w = loc.getWorld();
-        World w2 = loc.getWorld();
-        if (isBoxMaterial(sel))
+        if (isBoxMaterial(surface))
         {
             int x = loc.getBlockX();
             int y = loc.getBlockY();
@@ -420,11 +420,9 @@ public class ChestStorage extends JavaPlugin implements Listener
             while(isBoxMaterial(sel))
                 sel = w.getBlockAt(x, y, z2++).getType();
             return new CoordinatePair(new Location(w, x1 + 2, y1 + 2, z1 + 2), new Location(w, x2 - 2, y2 - 2, z2 - 2));
-
-
         }
 
-        if (isBoxMaterial(sel2))
+        if (isBoxMaterial(surfaceSide))
         {
             int x = loc.getBlockX();
             int y = loc.getBlockY();
@@ -437,27 +435,91 @@ public class ChestStorage extends JavaPlugin implements Listener
             int z1 = z;
             int z2 = z;
 
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x1--, y, z).getType();
-            sel2 = surfaceSide;
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x2++, y, z).getType();
-            sel2 = surfaceSide;
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x, y1--, z).getType();
-            sel2 = surfaceSide;
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x, y2++, z).getType();
-            sel2 = surfaceSide;
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x, y, z1--).getType();
-            sel2 = surfaceSide;
-            while(isBoxMaterial(sel2))
-                sel2 = w2.getBlockAt(x, y, z2++).getType();
-            return new CoordinatePair(new Location(w2, x1 + 2, y1 + 2, z1 + 2), new Location(w2, x2 - 2, y2 - 2, z2 - 2));
-
-
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x1--, y, z).getType();
+            sel = surfaceSide;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x2++, y, z).getType();
+            sel = surfaceSide;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y1--, z).getType();
+            sel = surfaceSide;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y2++, z).getType();
+            sel = surfaceSide;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z1--).getType();
+            sel = surfaceSide;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z2++).getType();
+            return new CoordinatePair(new Location(w, x1 + 2, y1 + 2, z1 + 2), new Location(w, x2 - 2, y2 - 2, z2 - 2));
         }
+
+        if (isBoxMaterial(edge))
+        {
+            int x = loc.getBlockX();
+            int y = loc.getBlockY();
+            int z = loc.getBlockZ();
+
+            int x1 = x;
+            int x2 = x;
+            int y1 = y;
+            int y2 = y;
+            int z1 = z;
+            int z2 = z;
+
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x1--, y, z).getType();
+            sel = edge;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x2++, y, z).getType();
+            sel = edge;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y1--, z).getType();
+            sel = edge;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y2++, z).getType();
+            sel = edge;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z1--).getType();
+            sel = edge;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z2++).getType();
+            return new CoordinatePair(new Location(w, x1 + 2, y1 + 2, z1 + 2), new Location(w, x2 - 2, y2 - 2, z2 - 2));
+        }
+        if (isBoxMaterial(filler))
+        {
+            int x = loc.getBlockX();
+            int y = loc.getBlockY();
+            int z = loc.getBlockZ();
+
+            int x1 = x;
+            int x2 = x;
+            int y1 = y;
+            int y2 = y;
+            int z1 = z;
+            int z2 = z;
+
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x1--, y, z).getType();
+            sel = filler;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x2++, y, z).getType();
+            sel = filler;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y1--, z).getType();
+            sel = filler;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y2++, z).getType();
+            sel = filler;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z1--).getType();
+            sel = filler;
+            while(isBoxMaterial(sel))
+                sel = w.getBlockAt(x, y, z2++).getType();
+            return new CoordinatePair(new Location(w, x1 + 2, y1 + 2, z1 + 2), new Location(w, x2 - 2, y2 - 2, z2 - 2));
+        }
+
         return null;
     }
 
@@ -477,7 +539,7 @@ public class ChestStorage extends JavaPlugin implements Listener
                             if (sel != edge)
                                 return false;
                         }
-                        else if (sel != surface)
+                        else if (sel != surface && sel != surfaceSide)
                             return false;
                     }
                     else if (y == start.getBlockY() || y == end.getBlockY())
@@ -487,7 +549,7 @@ public class ChestStorage extends JavaPlugin implements Listener
                             if (sel != edge)
                                 return false;
                         }
-                        else if (sel != surface)
+                        else if (sel != surface && sel != surfaceSide)
                             return false;
                     }
                     else if (z == start.getBlockZ() || z == end.getBlockZ())
@@ -497,7 +559,7 @@ public class ChestStorage extends JavaPlugin implements Listener
                             if (sel != edge)
                                 return false;
                         }
-                        else if (sel != surface)
+                        else if (sel != surface && sel != surfaceSide)
                             return false;
                     }
                     else if (sel != filler)
